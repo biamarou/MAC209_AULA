@@ -1,23 +1,23 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
 def metodoEuler(y0, v0, g, N):
-    delta = 0.01
-    for i in range (1, N + 1):
-        y = y0 + v0*delta
-        v = v0 - g*delta
-        print (y, v)
+   
+    for i in np.arange (0, N, 0.1):
+        y = y0 + v0*i
+        v = v0 - g*i
+        plt.plot(i,y,'ro')
 
 def analitico (y0, v0, g, N):
-    t = N*0.01
-    y = y0 + v0 *t -1/2*g*t**2
-    v = v0 - g*t
 
-    print (y, v)
-
+    for t in np.arange (0, N, 0.1):
+        y = y0 + v0 *t -1/2*g*t**2
+        v = v0 - g*t
+        plt.plot(t,y,'yo')
 
 def main ():
     metodoEuler(100, 0, 9.8, 500)
     analitico(100, 0, 9.8, 500)
-
+    plt.show()
 main()
     
